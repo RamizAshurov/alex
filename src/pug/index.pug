@@ -1,0 +1,20 @@
+extends templates/layout
+
+block head
+    title Alex. 
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css")
+    link(rel="stylesheet", href="css/style.min.css")
+block content 
+    //- .page 
+    //-     .page__wrapper
+    include includes/hero.pug
+    include includes/services.pug
+    include includes/portfolio.pug
+    include includes/experience.pug
+    include includes/blog.pug
+    include includes/testimonials.pug
+    include includes/skills.pug
+    include includes/contacts.pug
+block scripts 
+    script(src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js")
+    script(src="js/app.min.js") 

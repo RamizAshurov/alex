@@ -1,0 +1,35 @@
+.footer {
+    padding: 88px 0;
+    &__social {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+    }
+    &__social-link {
+        display: inline-block;
+        color: $grey;
+        font-size: 20px;
+        line-height: 24px;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        vertical-align: middle;
+        transition: color 0.15s ease 0s;
+        @media (any-hover: hover) {
+            &:hover {
+                color: $purple;
+            }
+        }
+    }
+    &__copyright {
+        color: $grey;
+        font-family: "Inter", serif;
+        font-size: 14px;
+        line-height: 1.2;
+        margin: 24px 0 0;
+        text-align: center;
+    }
+    @include gap {
+        padding: 40px 0;
+    }
+}

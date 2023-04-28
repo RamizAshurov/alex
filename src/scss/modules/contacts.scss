@@ -1,0 +1,223 @@
+.contacts {
+    &__content {
+        display: grid;
+        grid-template-columns: 50% 1fr;
+        column-gap: 104px;
+    }
+    &__list {
+        padding-top: 56px 0 0
+    }
+
+    &__input {
+        background-color: $white;
+        border-radius: 8px;
+        color: $grey;
+        font-family: "Inter", serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
+        padding: 16px 24px;
+        width: 100%;
+        &_textarea {
+            border: none;
+            outline: none;
+            margin: 24px 0 0;
+            resize: vertical;
+            height: 190px;
+        }
+        &_error {
+            box-shadow: 0 0 5px 2px $purple;
+        }
+        & + & {
+            margin: 16px 0 0;
+        }
+        &::placeholder {
+            color: $grey
+        }
+        &:focus {
+            &::placeholder {
+                color: $black
+            }
+        }
+        &:disabled {
+            background-color: rgba(0, 0, 0,.12);
+            color: rgba(0, 0, 0, 0.26);
+            cursor: default;
+        }
+    }
+
+    &__button {
+        background-color: $purple;
+        border: 1px solid #EAE6FE;
+        border-radius: 8px;
+        color: $white;
+        cursor: pointer;
+        margin: 48px 0 0;
+        padding: 16px 24px;
+        width: 100%;
+        transition: background-color 0.15s ease 0s;
+        &:disabled {
+            background-color: rgba(0, 0, 0, 0.12);
+            border-color: transparent;
+            color: rgba(0, 0, 0, 0.26);
+            cursor: default;
+        }
+        @media (any-hover: hover) {
+            &:not(:disabled):hover {
+                background-color: #645bcd;
+            }
+        }
+    }
+    &__popup {
+        background-color: rgba(0, 0, 0, 0.75);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease 0s;
+        z-index: 50;
+        &_open {
+            opacity: 1;
+            visibility: visible;
+            .contacts__popup-content {
+                transform: scale(1);
+            }
+        }
+    }
+    &__popup-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding: 30px 15px;
+        min-height: 100%;
+    }
+    &__popup-content {
+        background-color: $white;
+        border-radius: 16px;
+        position: relative;
+        padding: 20px;
+        max-width: 550px;
+        min-height: 250px;
+        width: 100%;
+        transform: scale(0.2);
+        transition: transform 0.3s ease 0s;
+    }
+    &__popup-title {
+        font-size: 36px;
+        font-weight: 700;
+        text-align: center;
+    }
+    &__popup-text {
+        color: $purple;
+        font-size: 18px;
+        font-weight: 400;
+        margin: 40px auto 0;
+        max-width: 350px;
+        text-align: center;
+    }
+    &__popup-close {
+        cursor: pointer;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 30px;
+        height: 30px;
+        &:before, &:after {
+            background-color: $black;
+            border-radius: 4px;
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            transition: background-color 0.2s ease 0s;
+        }
+        &:before {
+            transform: rotate(-45deg);
+        }
+        &:after {
+            transform: rotate(45deg);
+        }
+        @media (any-hover: hover) {
+            &:hover {
+                &:before, &:after {
+                    background-color: $purple;
+                }
+            }
+        }
+    }
+
+
+    @include desktop {
+        &__content {
+            column-gap: calc((100% - 728px) / 432 * 84 + 20px);
+        }
+    }
+
+    @include gap {
+        &__content {
+            grid-template-columns: auto;
+            column-gap: 0;
+            row-gap: 40px;
+        }
+        &__form {
+            order: 1
+        }
+    }
+    @include phone {
+        &__popup-title {
+            font-size: 28px;
+        }
+    }
+}
+
+.contact-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 16px;
+    row-gap: 4px;
+    &__icon {
+        background-color: $lightpuprle;
+        border-radius: 16px;
+        color: $purple;
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+        padding: 16px;
+        &:before {
+            display: inline-block;
+            line-height: 24px;
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+            text-align: center;
+        }
+    }
+    &__title {
+        font-family: "Inter", serif;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.25;
+    }
+    &__text {
+        color: $grey;
+        font-family: "Inter", serif;
+        font-size: 14px;
+        line-height: 1.7;
+        transition: color 0.15s ease 0s;
+        @media (any-hover: hover) {
+            &:hover {
+                color: $purple
+            }
+        }
+    }
+    & + & {
+        margin: 48px 0 0
+    }
+}
